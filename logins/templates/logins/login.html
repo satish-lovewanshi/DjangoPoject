@@ -1,0 +1,96 @@
+<!--teacher logins-->
+
+{% extends 'base.html' %} {% block login %}
+<div class="container-fluid bg-light">
+    <div class="row">
+        <div class="col-md-6 col-lg-12 mt-3">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#student" role="tab" aria-controls="home" aria-selected="true">Student</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#teacher" role="tab" aria-controls="profile" aria-selected="false">Teacher</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="contact" aria-selected="false">Admin</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="student" role="tabpanel" aria-labelledby="home-tab">
+                    <!-- student logins tab -->
+                    <div class="container-fluid mt-3 mb-3" style="background-color: rgba(0,0,0, 0.3);">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="number">College code</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="number">Roll Number</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Password</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword1" />
+                                            </div>
+                                            <div class="checkbox">
+
+                                                <label>
+                                                <input type="checkbox" /> Check me out
+                                            </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">
+                                            Submit
+                                        </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="teacher" role="tabpanel" aria-labelledby="profile-tab">
+                    <!-- teacher logins tab -->
+                    <div class="container-fluid mt-3 mb-3" style="background-color: rgba(0,0,0, 0.3);">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="number">College code</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="number">Teacher ID</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Password</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword1" />
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="contact-tab">...</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock login %}

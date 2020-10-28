@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mymcqworld.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'app1/templates')],
+        'DIRS': [os.path.join(BASE_DIR,'app1/templates'),os.path.join(BASE_DIR,'logins/templates/logins')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
