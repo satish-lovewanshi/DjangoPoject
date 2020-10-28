@@ -1,6 +1,6 @@
-<!--teacher logins-->
+<!--Registrations-->
 
-{% extends 'base.html' %} {% block login %}
+{% extends 'base.html' %} {% block register %}
 <div class="container-fluid bg-light">
     <div class="row">
         <div class="col-md-6 col-lg-12 mt-3">
@@ -100,9 +100,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="contact-tab">
+                    <form action="{% url 'register' %}" method="POST">
+                        {% csrf_token %} {% for field in StudentRegFrom %} {{field.label_tag}}{{field}} {% endfor %}
+                        <input type="submit" name="" id="" value="Register">
+                    </form>
+
+
+                </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock login %}
+
+{% endblock register %}
