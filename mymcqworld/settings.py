@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'logins',
+    'quizbox',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,11 @@ ROOT_URLCONF = 'mymcqworld.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'app1/templates'),os.path.join(BASE_DIR,'logins/templates/logins')],
+        'DIRS': [
+            os.path.join(BASE_DIR,'app1/templates'),
+            os.path.join(BASE_DIR,'logins/templates/logins'),
+            os.path.join(BASE_DIR,'quizbox/templates/quizbox'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
