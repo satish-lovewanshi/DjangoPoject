@@ -18,47 +18,21 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="student" role="tabpanel" aria-labelledby="home-tab">
                     <!-- student logins tab -->
-                    <div class="container-fluid mt-3 mb-3" style="background-color: rgba(0,0,0, 0.3);">
+                    <div class="container-fluid mt-3 mb-3">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-4">
                                     </div>
-                                    <div class="col-md-4">
-                                        <form role="form">
+                                    <div class="col-md-4" style="background-color:rgba(184, 13, 13, 0.281);">
+                                        <form action="{% url 'register' %}" method="POST" role='form'>
+                                            {% csrf_token %} {% for form in StudentRegFrom %}
                                             <div class="form-group">
-                                                <label for="number">College code</label>
-                                                <input type="text" class="form-control" id="" />
+                                                {{form.label_tag}}
+                                                <p>{{ form}} </p>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="number">Roll Number</label>
-                                                <input type="text" class="form-control" id="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="number">Name</label>
-                                                <input type="text" class="form-control" id="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="number">Branch</label>
-                                                <input type="text" class="form-control" id="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="number">Year</label>
-                                                <input type="text" class="form-control" id="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1" />
-                                            </div>
-                                            <div class="checkbox">
-
-                                                <label>
-                                                <input type="checkbox" /> Check me out
-                                            </label>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">
-                                            Submit
-                                        </button>
+                                            {% endfor %}
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
                                     </div>
                                     <div class="col-md-4">
@@ -70,26 +44,20 @@
                 </div>
                 <div class="tab-pane fade" id="teacher" role="tabpanel" aria-labelledby="profile-tab">
                     <!-- teacher logins tab -->
-                    <div class="container-fluid mt-3 mb-3" style="background-color: rgba(0,0,0, 0.3);">
+                    <div class="container-fluid mt-3 mb-3">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-4">
                                     </div>
-                                    <div class="col-md-4">
-                                        <form role="form">
+                                    <div class="col-md-4" style="background-color: rgba(6, 226, 17, 0.281);">
+                                        <form action="{% url 'register' %}" method="POST" role='form'>
+                                            {% csrf_token %} {% for forms in TeacherRegForm %}
                                             <div class="form-group">
-                                                <label for="number">College code</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" />
+                                                {{forms.label_tag}}
+                                                <p>{{ forms}} </p>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="number">Teacher ID</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1" />
-                                            </div>
+                                            {% endfor %}
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
                                     </div>
@@ -101,12 +69,7 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="contact-tab">
-                    <form action="{% url 'register' %}" method="POST">
-                        {% csrf_token %} {% for field in StudentRegFrom %} {{field.label_tag}}{{field}} {% endfor %}
-                        <input type="submit" name="" id="" value="Register">
-                    </form>
-
-
+                    <!-- forms -->
                 </div>
             </div>
         </div>
