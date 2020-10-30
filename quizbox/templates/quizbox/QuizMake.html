@@ -1,4 +1,26 @@
-{% extends 'base.html' %}
-{% block QuizMake %}
-<h1>this page is make a quze for test by teacher</h1>
+{% extends 'base.html' %} {% block QuizMake %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+
+
+
+        <div class="col-md-4 " style="background-color:rgba(231, 10, 194, 0.5);">
+            {% block first %}
+            <form role="form">
+                <table class="table">
+                    {{forms.as_table}}
+                </table>
+                <a type="button" class="btn btn-primary  btn-block" href="{% url 'AddQues' %}">
+					create test add questions
+                </a>
+            </form>
+            {% endblock first %}
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
 {% endblock QuizMake %}
