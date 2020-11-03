@@ -5,19 +5,23 @@
         </div>
 
         <div class="col-md-8 " style="background-color:rgba(231, 10, 194, 0.5);">
-            {% block first %}
+
             <form method="POST" action="" role="form" class='mt-4' style="background-color:rgba(190, 231, 10, 0.5);">
-                {% csrf_token %}
+                {% csrf_token %} {% if forms %}
                 <table class="table">
                     {{forms.as_table}}
-                    {{question_set}}
 
                 </table>
-                <h1>{{filled_form_id}}</h1>
-                <input type="submit" name="" id="" value="Save teat & Add Ques." class='btn btn-block btn-primary'>
+                <input type="submit" name="" id="" value="Save test & Add Ques." class='btn btn-block btn-primary'> {% endif %}
             </form>
-           
-            {% endblock first %}
+            <br><br>
+            {% if filled_form_pk %}
+            <a href="{% url 'AddQues' pk=filled_form_pk %}">{{note}} {{filled_form_pk}}</a> 
+            {% endif %}
+            <h1>{{notes}}</h1>
+            
+
+
         </div>
         <div class="col-md-2">
         </div>

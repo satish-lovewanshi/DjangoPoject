@@ -1,0 +1,15 @@
+{% extends 'QuizMake.html' %} 
+<h1> this is addd quiz page</h1>
+     {% if formset %}
+                <table class="table">
+                   
+                    {{formset}}
+                </table>
+                 <input type="submit" name="" id="" value="Save test" class='btn btn-block btn-primary'>
+                 {% endif %} 
+                 {{note}}
+
+
+
+<!-- <a href="{% url 'AddQues' %}" type="submit" class="btn btn-primary btn-block">Add More Question</a>
+<a href="#" type="button" class="btn btn-success btn-block">Preview Questions</a>  -->

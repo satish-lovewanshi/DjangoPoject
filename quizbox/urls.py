@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('quizmake',views.QuizMake,name='QuizMake'),
-    path('AddQues',views.AddQues,name='AddQues')
+    path('AddQues/<int:pk>',views.AddQues,name='AddQues')
 ]
