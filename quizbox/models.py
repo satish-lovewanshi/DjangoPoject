@@ -11,5 +11,5 @@ class Question(models.Model):
     option_C=models.CharField(max_length=1000)
     option_D=models.CharField(max_length=1000)
     answer=models.CharField(max_length=1000)
-    # test_id=models.ForeignKey(Test,on_delete=models.CASCADE,to_field='id')
+    test=models.IntegerField()
  

@@ -7,20 +7,21 @@
         <div class="col-md-8 " style="background-color:rgba(231, 10, 194, 0.5);">
 
             <form method="POST" action="" role="form" class='mt-4' style="background-color:rgba(190, 231, 10, 0.5);">
-                {% csrf_token %} {% if forms %}
-                <table class="table">
-                    {{forms.as_table}}
-
-                </table>
-                <input type="submit" name="" id="" value="Save test & Add Ques." class='btn btn-block btn-primary'> {% endif %}
+                {% csrf_token %} 
+                    {% if forms %}
+                        <table class="table">
+                            {{forms.as_table}}
+                        </table>
+                    
+                        <input type="submit" name="" id="" value="Save test & Add Ques." class='btn btn-block btn-primary'>
+                     {% endif %}
             </form>
-            <br><br>
-            {% if filled_form_pk %}
-            <a href="{% url 'AddQues' pk=filled_form_pk %}">{{note}} {{filled_form_pk}}</a> 
-            {% endif %}
-            <h1>{{notes}}</h1>
             
+            {% if filled_form_pk %}
+                <a href="{% url 'AddQues' pk=filled_form_pk %}" class='btn btn-primary'>Add questions {{filled_form_pk}}</a> 
+            {% endif %}
 
+            <h1>{{notes}}</h1>
 
         </div>
         <div class="col-md-2">

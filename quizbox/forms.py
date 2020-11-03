@@ -6,8 +6,8 @@ class QuestionForm(forms.ModelForm):
     
     class Meta:
         model = Question
-        # exclude =('test_id',)
-        fields = ('__all__')
+        exclude =('test',)
+        # fields = ('__all__')
         widgets={
             'question':Textarea(attrs={'cols':100,'rows':3}),
             'option_A':Textarea(attrs={'cols':100,'rows':2}),
