@@ -21,4 +21,6 @@ class TestForm(forms.ModelForm):
     class Meta:
         model = Test
         fields = ('__all__')
+        # number_of_questions=forms.IntegerField(min_value=1, max_value=50)
+    
 
