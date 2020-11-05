@@ -36,6 +36,9 @@
                  <li class="nav-item">
                     <a class="nav-link" href="{% url 'QuizMake' %}">Make Quiz</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Student</a>
+                </li>
                
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -50,6 +53,8 @@
     {% endblock register %}
     {% block QuizMake %}
     {% endblock QuizMake %}
+    {% block student %}
+{% endblock student %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 

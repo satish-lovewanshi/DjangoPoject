@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block student %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 mt-3">
+            <form action="" method="POST">
+                {% csrf_token %} {% for ques in questions %}
+                <div class="card border-secondary mb-3">
+                    <div class="card-header">{{ques.id}}. {{ques.question}}</div>
+                    <div class="card-body text-secondary">
+                        <input type="radio" name="ques">
+                        <label class="card-text">{{ques.option_A}}</label>
+                        <br>
+                        <input type="radio" name="ques" id="">
+                        <label class="card-text">{{ques.option_B}}</label>
+                        <br>
+                        <input type="radio" name="ques" id="">
+                        <label class="card-text">{{ques.option_C}}</label>
+                        <br>
+                        <input type="radio" name="ques" id="">
+                        <label class="card-text">{{ques.option_D}}</label>
+                    </div>
+                </div>
+                {% endfor %}
+                <input type="submit" name="" id="" value="Submit" class="btn btn-success btn-block">
+            </form>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+</div>{% endblock student %}

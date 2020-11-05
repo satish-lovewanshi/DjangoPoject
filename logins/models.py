@@ -3,10 +3,19 @@ from django.db import models
 # Create your models here.
 class Branch(models.Model):
     branch=models.CharField(max_length=100)
+    def __str__(self):
+        return self.branch
+    
 class Year(models.Model):
     year=models.CharField(max_length=100)
+    def __str__(self):
+        return self.year
+    
 class Code(models.Model):
     code=models.CharField(max_length=100)
+    def __str__(self):
+        return self.code
+    
 class StudentReg(models.Model):
     college_code=models.ForeignKey(Code,on_delete=models.CASCADE)
     name=models.CharField(max_length=200)

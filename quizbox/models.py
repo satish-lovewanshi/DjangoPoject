@@ -1,5 +1,11 @@
 from django.db import models
 
+class Answer(models.Model):
+    ans=models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.ans
+    
 class Test(models.Model):
     subject=models.CharField(max_length=100)
     test_code=models.CharField(max_length=30)
@@ -10,6 +16,6 @@ class Question(models.Model):
     option_B=models.CharField(max_length=1000)
     option_C=models.CharField(max_length=1000)
     option_D=models.CharField(max_length=1000)
-    answer=models.CharField(max_length=1000)
+    answer=models.ForeignKey(Answer,on_delete=models.CASCADE)
     test=models.IntegerField()
  

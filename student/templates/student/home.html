@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block QuizMake %}
+{% extends 'base.html' %}
+{% block student %}
 <div class="container-fluid mt-4">
     <div class='row'>
         <div class=col-md-2>
@@ -23,19 +24,13 @@
                         <td>{{t.id}}</td>
                         <td>{{t.number_of_questions}}</td>
                         <td>
-                            <a href="{% url 'delete_test' t.id %}" class='btn btn-danger'>Delete</a>
-                            <a href="{% url 'edit_test' t.id  %}" class='btn btn-warning'>Edit Test</a>
-                            <a href="{% url 'AddQues' t.id  %}" class='btn btn-warning'>Edit Question</a>
+                            <a href="{% url 'start' t.id %}" class='btn btn-success'>Start</a>
+                            
                         </td>
                     </tr>
 
                     {% endfor %}
                 </tbody>
-
-
-
-
-
             </table>
         </div>
         <div class=col-md-2>
@@ -43,4 +38,4 @@
     </div>
 </div>
 
-{% endblock QuizMake %}
+{% endblock student %}

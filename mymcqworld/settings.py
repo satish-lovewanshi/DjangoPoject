@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'logins',
     'quizbox',
+    'student',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR,'app1/templates'),
             os.path.join(BASE_DIR,'logins/templates/logins'),
             os.path.join(BASE_DIR,'quizbox/templates/quizbox'),
+            os.path.join(BASE_DIR,'student/templates/student'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
