@@ -2,7 +2,7 @@ from django.db import models
 
 class Test(models.Model):
     subject=models.CharField(max_length=100)
-    code=models.CharField(max_length=30)
+    test_code=models.CharField(max_length=30)
     number_of_questions=models.IntegerField()
 class Question(models.Model):
     question=models.CharField(max_length=2000)
