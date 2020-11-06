@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block QuizMake %}
+<div class="container-fluid mt-4">
+    <div class='row'>
+        <div class=col-md-2>
+        </div>
+        <div class=col-md-8>
+         {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    <h4 class="alert-heading">{{note}}</h4>
+                    <p>{{message}}</p>
+                    <hr>
+                </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        {{test_form}}
+        <h1 class="alert alert-warning " style='text-align:center'>Questions table </h1>
+            <table class='table'>
+                
+                <thead>
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Question</th>
+                        <th scope="col">Test ID</th>
+                        <th scope="col">Answer</th>
+                        <th scope='col'>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for q in ques %}
+                    <tr>
+                        <th scope="row">{{q.id}}</th>
+                        <td>{{q.question}}</td>
+                        <td>{{q.test}}</td>
+                        <td>{{q.answer}}</td>
+                        <td>
+                            <a href="{% url 'delete_ques' q.id%}" class='btn btn-danger'>Delete</a>
+                            <a href="{% url 'edit_ques' q.id %}" class='btn btn-warning'>Edit</a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+           
+        </div>
+        <div class=col-md-2>
+        </div>
+    </div>
+</div>
+
+{% endblock QuizMake %}

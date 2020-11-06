@@ -4,8 +4,20 @@
         <div class=col-md-2>
         </div>
         <div class=col-md-8>
+         {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    <h4 class="alert-heading">{{note}}</h4>
+                    <p>{{message}}</p>
+                    <hr>
+                </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+                <h1 class="alert alert-warning " style='text-align:center'>Test table  </h1>
             <table class='table'>
-                <caption class="bg-warning">This is Quiz Table</caption>
+
                 <thead>
                     <tr>
                         <th scope="col">S.No</th>
@@ -20,23 +32,19 @@
                     <tr>
                         <th scope="row">{{t.id}}</th>
                         <td>{{t.subject}}</td>
-                        <td>{{t.id}}</td>
+                        <td>{{t.test_code}}</td>
                         <td>{{t.number_of_questions}}</td>
                         <td>
                             <a href="{% url 'delete_test' t.id %}" class='btn btn-danger'>Delete</a>
                             <a href="{% url 'edit_test' t.id  %}" class='btn btn-warning'>Edit Test</a>
-                            <a href="{% url 'AddQues' t.id  %}" class='btn btn-warning'>Edit Question</a>
+                            <a href="{% url 'manage_ques' t.id  %}" class='btn btn-warning'>Edit Question</a>
                         </td>
                     </tr>
 
                     {% endfor %}
                 </tbody>
-
-
-
-
-
             </table>
+            
         </div>
         <div class=col-md-2>
         </div>
