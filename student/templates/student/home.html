@@ -9,7 +9,7 @@
                 <caption class="bg-warning">This is Quiz Table</caption>
                 <thead>
                     <tr>
-                        <th scope="col">S.No</th>
+                        <th scope="col">Test ID</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Code</th>
                         <th scope="col">Total Question</th>
@@ -21,7 +21,7 @@
                     <tr>
                         <th scope="row">{{t.id}}</th>
                         <td>{{t.subject}}</td>
-                        <td>{{t.id}}</td>
+                        <td>{{t.test_code}}</td>
                         <td>{{t.number_of_questions}}</td>
                         <td>
                             <a href="{% url 'start' t.id %}" class='btn btn-success'>Start</a>
