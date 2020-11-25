@@ -25,6 +25,7 @@ SECRET_KEY = '+66h)@p@wvrmm5qa30&)vb-t#h0$y)*pp_!c*5l)&e(2dlvfgr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+AUTH_USER_MODEL='logins.User'
 
 ALLOWED_HOSTS = []
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'logins',
     'quizbox',
     'student',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -127,5 +129,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
+CRISPY_TEMPLATE_PACK='bootstrap4'
 
 django_heroku.settings(locals())

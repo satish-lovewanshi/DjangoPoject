@@ -1,54 +1,45 @@
 {% extends 'base.html' %} {% block QuizMake %}
-<div class="container-fluid mt-4">
-    <div class='row'>
-        <div class=col-md-2>
+<div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            <h4 class="alert-heading">{{note}}</h4>
+            <p>{{message}}</p>
+            <hr>
         </div>
-        <div class=col-md-8>
-         {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}" role="alert">
-                    <h4 class="alert-heading">{{note}}</h4>
-                    <p>{{message}}</p>
-                    <hr>
-                </div>
-            {% endfor %}
-        </ul>
+        {% endfor %}
+    </ul>
     {% endif %}
-                <h1 class="alert alert-warning " style='text-align:center'>Test table  </h1>
-            <table class='table'>
+    <h1 class="alert alert-warning " style='text-align:center'>Test table </h1>
+    <table class='table'>
 
-                <thead>
-                    <tr>
-                        <th scope="col">S.No</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Total Question</th>
-                        <th scope='col'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for t in test %}
-                    <tr>
-                        <th scope="row">{{t.id}}</th>
-                        <td>{{t.subject}}</td>
-                        <td>{{t.test_code}}</td>
-                        <td>{{t.number_of_questions}}</td>
-                        <td>
-                            <a href="{% url 'delete_test' t.id %}" class='btn btn-danger'>Delete</a>
-                            <a href="{% url 'edit_test' t.id  %}" class='btn btn-warning'>Edit Test</a>
-                            <a href="{% url 'manage_ques' t.id  %}" class='btn btn-warning'>Edit Question</a>
-                        </td>
-                    </tr>
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Code</th>
+                <th scope="col">Total Question</th>
+                <th scope='col'>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in test %}
+            <tr>
+                <th scope="row">{{t.id}}</th>
+                <td>{{t.subject}}</td>
+                <td>{{t.test_code}}</td>
+                <td>{{t.number_of_questions}}</td>
+                <td>
+                    <a href="{% url 'delete_test' t.id %}" class='btn btn-danger'>Delete</a>
+                    <a href="{% url 'edit_test' t.id  %}" class='btn btn-warning'>Edit Test</a>
+                    <a href="{% url 'manage_ques' t.id  %}" class='btn btn-warning'>Edit Question</a>
+                </td>
+            </tr>
 
-                    {% endfor %}
-                </tbody>
-            </table>
-            
-        </div>
-        <div class=col-md-2>
-        </div>
-    </div>
+            {% endfor %}
+        </tbody>
+    </table>
+
 </div>
-
 {% endblock QuizMake %}

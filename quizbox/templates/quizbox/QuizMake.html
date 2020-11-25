@@ -1,54 +1,34 @@
-{% extends 'base.html' %} {% block QuizMake %}
-<div class="container-fluid mt-4">
-    <div class="row">
-        <div class="col-md-2">
+{% extends 'base.html' %} {% block QuizMake %} {% load crispy_forms_tags %}
+<div>
+    <form method="POST" action="" role="form" style="background-color:#a55eea;">
+        {% csrf_token %} {% if forms %}
+        <table class="table ">
+            {{forms.as_table}}
+        </table>
+        <input type="submit" name="" id="" value="Save Test " class='btn btn-block btn-warning'> {% endif %} {% if test_form %}
+        <table class='table'>
+            <h1 class='alert alert-warning' style='text-align:center'>Test Update Form </h1>
+            {{test_form.as_table}}
+        </table>
+        <input type='submit' name='' id='' value='Update Test' class='btn btn-warning btn-block'> {% endif %} {% if ques_update_form %}
+        <table class='table'>
+            <h1 class='alert alert-warning' style='text-align:center'>Question Update Form </h1>
+            {{ques_update_form.as_table}}
+        </table>
+        <input type='submit' name='' id='' value='Update Questions' class='btn btn-warning btn-block'> {% endif %}
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            <h4 class="alert-heading">{{note}}</h4>
+            <p>{{message}}</p>
+            {% if filled_form_pk %}
+            <a href="{% url 'AddQues' pk=filled_form_pk %}" class='btn btn-primary'>Add questions {{filled_form_pk}}</a> {% endif %}
         </div>
-
-        <div class="col-md-8 ">
-            <form method="POST" action="" role="form"  style="background-color:#a55eea;">
-                {% csrf_token %} 
-                    {% if forms %}
-                        <table class="table ">
-                            {{forms.as_table}}
-                        </table>
-                        <input type="submit" name="" id="" value="Save Test " class='btn btn-block btn-warning'>
-                     {% endif %}
-                    {% if test_form %}
-                        <table class='table'>
-                            <h1 class='alert alert-warning' style='text-align:center'>Test Update Form  </h1>
-                            {{test_form.as_table}}
-                        </table>
-                        <input type='submit' name='' id='' value='Update Test' class='btn btn-warning btn-block'>
-                    {% endif %}
-                    
-                    {% if ques_update_form %}
-                        <table class='table'>
-                            <h1 class='alert alert-warning' style='text-align:center'>Question Update Form  </h1>
-                            {{ques_update_form.as_table}}
-                        </table>
-                        <input type='submit' name='' id='' value='Update Questions' class='btn btn-warning btn-block'>
-                    {% endif %}
-            </form>
-             {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}" role="alert">
-                    <h4 class="alert-heading">{{note}}</h4>
-                    <p>{{message}}</p>
-                    <hr>
-                    {% if filled_form_pk %}
-                        <a href="{% url 'AddQues' pk=filled_form_pk %}" class='btn btn-primary'>Add questions {{filled_form_pk}}</a> 
-                    {% endif %}
-                </div>
-            {% endfor %}
-        </ul>
+        {% endfor %}
+    </ul>
     {% endif %}
 
-        </div>
-        
-        <div class="col-md-2">
-        </div>
-    </div>
 </div>
-
 {% endblock QuizMake %}

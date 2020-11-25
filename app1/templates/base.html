@@ -20,33 +20,75 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto text-white">
-                <li class="nav-item active">
+            <ul class="navbar-nav mr-auto text-white">              
+               {% if user.is_authenticated %}
+                    {% if request.user.is_student and request.user.profile_update %} <!--this if block for student -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Test List</a>
+                        </li>                
+                    {% endif %}
+
+                    {% if request.user.is_teacher and request.user.profile_update %}   <!--this if block for Teacher -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'QuizMake' %}">Make Quiz</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'manage_test' %}">Manage Test</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'LogoutUser' %}" style="color:yellow;">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item active">
                     <a class="nav-link " href=".">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'LoginPage' %}">Login</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register </a>
+                    <a class="nav-link" href="{% url 'signup_as' %}">SignUp</a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'QuizMake' %}">Make Quiz</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">Student</a>
-                </li>
-               
+                
+               {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            {% comment %} <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> {% endcomment %}
         </div>
     </nav>
+
+    <div class="container-fluid mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {% if user.is_authenticated %}
+                    <h1>Hello ,{{user}}</h1>
+                {% endif %}
+                {% if request.user.profile_update == False %}
+                <a href='' class='btn btn-block btn-success'>Update Profile</a>
+                {% endif %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+   
+           {% comment %} {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    <h4 class="alert-heading">{{note}}</h4>
+                    <p>{{message}}</p>
+                    <hr>
+               </div>
+            {% endfor %}
+        </ul>
+    {% endif %} {% endcomment %}
+
     {% block login %}
     {% endblock login %}
     {% block register %}
@@ -54,7 +96,8 @@
     {% block QuizMake %}
     {% endblock QuizMake %}
     {% block student %}
-{% endblock student %}
+        
+    {% endblock student %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 

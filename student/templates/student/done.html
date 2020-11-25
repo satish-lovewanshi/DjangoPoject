@@ -1,5 +1,23 @@
-{% extends 'base.html' %}
-{% block student %}
+{% extends 'base.html' %} {% block student %}
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <h1 style="text-align: center;">Your Test is Successfully Done !</h1>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p class="alert alert-{{ message.tags }}" role="alert">
+                    {{message}}
+                </p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>
 
-<h1>test done</h1>
-{% endblock student %}
+{{answer}} {% endblock student %}

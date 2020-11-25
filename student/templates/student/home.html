@@ -1,41 +1,33 @@
-{% extends 'base.html' %}
-{% block student %}
-<div class="container-fluid mt-4">
-    <div class='row'>
-        <div class=col-md-2>
-        </div>
-        <div class=col-md-8>
-            <table class='table'>
-                <caption class="bg-warning">This is Quiz Table</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Test ID</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Total Question</th>
-                        <th scope='col'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for t in test %}
-                    <tr>
-                        <th scope="row">{{t.id}}</th>
-                        <td>{{t.subject}}</td>
-                        <td>{{t.test_code}}</td>
-                        <td>{{t.number_of_questions}}</td>
-                        <td>
-                            <a href="{% url 'start' t.id %}" class='btn btn-success'>Start</a>
-                            
-                        </td>
-                    </tr>
+{% extends 'base.html' %} {% block student %}
+<div>
+    <table class='table'>
+        <caption class="bg-warning">This is Quiz Table</caption>
+        <thead>
+            <tr>
+                <th scope="col">Test ID</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Code</th>
+                <th scope="col">Total Question</th>
+                <th scope='col'>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in test %}
+            <tr>
+                <th scope="row">{{t.id}}</th>
+                <td>{{t.subject}}</td>
+                <td>{{t.test_code}}</td>
+                <td>{{t.number_of_questions}}</td>
+                <td>
 
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class=col-md-2>
-        </div>
-    </div>
+                    {% if t.id in is_done %}
+                    <button href="" class='btn btn-secondary block' disabled>Done</button> {% else %}
+                    <a href="{% url 'start' t.id %}" class='btn btn-success block'>Start</a> {% endif %}
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
-
 {% endblock student %}

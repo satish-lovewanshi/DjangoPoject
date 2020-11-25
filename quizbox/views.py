@@ -4,22 +4,29 @@ from .forms import QuestionForm,TestForm
 from django.forms import formset_factory
 from .models import Test,Question
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='LoginPage')
 def QuizMake(request):
     test_form=TestForm()
     # addques=QuestionForm()
     if request.method=='POST':
         filled_form=TestForm(request.POST)
         if filled_form.is_valid():
-            filled_form.save()
+            fm=filled_form.save(commit=False)
+            fm.teacher_id=request.session['user']
+            fm.save()
             filled_form_id=filled_form.save()
             filled_form_pk=filled_form_id.id
+            
             messages.success(request, 'Your test details saved.You can add questions for test click on add question button....')
             note='Test Details Add Successfuly !'
         return render(request,'QuizMake.html',{'filled_form_pk':filled_form_pk,'note':note,'forms':test_form})
     else:
         return render(request,'QuizMake.html',{'forms':test_form})
 
+@login_required(login_url='LoginPage')
 def AddQues(request,pk):
     test_info=Test.objects.get(id=pk)
     count=test_info.number_of_questions
@@ -40,19 +47,28 @@ def AddQues(request,pk):
         # return render(request,'QuizMake.html',{'note':note})
             return HttpResponseRedirect('/edit')
     return render(request,'QuizMake.html',{'forms':formset})
+@login_required(login_url='LoginPage')
 def edit(request):
     return render(request,'edit.html')
+    
+@login_required(login_url='LoginPage')
 def manage_test(request):
     test=Test.objects.all()
     return render(request,'manage_test.html',{'test':test})
+    
+@login_required(login_url='LoginPage')
 def delete_test(request,pk):
     test=Test.objects.get(id=pk).delete()
     messages.success(request,'Test delete succesfully !')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+    
+@login_required(login_url='LoginPage')
 def delete_ques(request,pk):
     Question.objects.get(id=pk).delete()
     messages.success(request,"Question delete successfully !")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+
+@login_required(login_url='LoginPage')
 def edit_test(request,pk):
     if request.method == 'POST':
         test=Test.objects.get(pk=pk)
@@ -65,9 +81,11 @@ def edit_test(request,pk):
         test=Test.objects.get(pk=pk)
         test_form=TestForm(instance=test)
     return render(request,'QuizMake.html',{'test_form':test_form})
+@login_required(login_url='LoginPage')
 def manage_ques(request,pk):
     ques=Question.objects.filter(test=pk)
     return render (request,'manage_ques.html',{'ques':ques})
+@login_required(login_url='LoginPage')
 def edit_ques(request,pk):
     if request.method == 'POST':
         ques=Question.objects.get(id=pk)

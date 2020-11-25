@@ -1,0 +1,20 @@
+ {% extends 'signup_as.html' %} {% block signup_as_student %} {% load crispy_forms_tags %} 
+ {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <p style='color:red;' role="alert">
+        {{message}}
+    </p>
+    {% endfor %}
+</ul>
+{% endif %}
+<form action="{% url 'StudentSignUp' %}" method="POST" role='form' style="text-align: left;">
+    {% csrf_token %}
+    <h2 class="text-align:center">Student Username and Password Creation Form</h2>
+    <hr>
+    {{ StudentSingUpForm|crispy }} {% if StudentSingUpForm.errors %}
+    <h4>error occured</h4>
+    {% endif %}
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
+{% endblock signup_as_student %}
