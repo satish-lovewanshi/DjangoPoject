@@ -45,14 +45,14 @@ def StudentSignUp(request):
             user.save()
             student=Student.objects.create( user=user,college_code=Code.objects.get(id=1),branch=Branch.objects.get(id=1),year=Year.objects.get(id=1))
             student.save()
-            messages.success(request,"Dear Student you are successfully register ")
+            # messages.success(request,"Dear Student you are successfully register ")
             username1=request.POST['username']
             password1=request.POST['password2']
             user=auth.authenticate(username=username1,password=password1)
             if user is not None :
                 login(request,user)
                 request.session['user']=user.username
-                messages.success(request,"you are logged in success! with username:")
+                # messages.success(request,"you are logged in success! with username:")
                 return redirect('/')   
         else:
             if len( request.POST['username']) > 15:
@@ -73,7 +73,7 @@ def UpdateProfile(request):
             ProfileForm=Student.objects.get(user=request.user)
             filled_form=StudentProfile(request.POST,instance=ProfileForm)
         if request.user.is_teacher == True :
-            student=Teacher.objects.get(user=request.user)
+            ProfileForm=Teacher.objects.get(user=request.user)
             filled_form=TeacherProfile(request.POST,instance=ProfileForm)
         
         if filled_form.is_valid(): 

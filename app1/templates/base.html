@@ -67,10 +67,10 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 {% if user.is_authenticated %}
-                    <h1>Hello ,{{user}}</h1>
+                    <h1 style="background-color:#a29bfe;">  Hello ,{{user}}</h1>
                 {% endif %}
                 {% if request.user.profile_update == False %}
-                <a href="{% url 'UpdateProfile' %}" class='btn btn-block btn-success'>Update Profile</a>
+                <a href="{% url 'UpdateProfile' %}" class='btn btn-block btn-danger btn-outline-success text-dark'>Update Profile</a>
                 {% endif %}
 
                 {% block login %}
