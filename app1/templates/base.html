@@ -70,8 +70,18 @@
                     <h1>Hello ,{{user}}</h1>
                 {% endif %}
                 {% if request.user.profile_update == False %}
-                <a href='' class='btn btn-block btn-success'>Update Profile</a>
+                <a href="{% url 'UpdateProfile' %}" class='btn btn-block btn-success'>Update Profile</a>
                 {% endif %}
+
+                {% block login %}
+                {% endblock login %}
+                {% block register %}
+                {% endblock register %}
+                {% block QuizMake %}
+                {% endblock QuizMake %}
+                {% block student %}
+                {% endblock student %}
+
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -89,16 +99,7 @@
         </ul>
     {% endif %} {% endcomment %}
 
-    {% block login %}
-    {% endblock login %}
-    {% block register %}
-    {% endblock register %}
-    {% block QuizMake %}
-    {% endblock QuizMake %}
-    {% block student %}
-        
-    {% endblock student %}
-
+   
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

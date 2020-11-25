@@ -70,11 +70,11 @@ def StudentSignUp(request):
 def UpdateProfile(request):
     if request.method == "POST":
         if request.user.is_student == True :        
-            student=Student.objects.get(user=request.user)
-            filled_form=StudentProfile(request.POST,instance=student)
+            ProfileForm=Student.objects.get(user=request.user)
+            filled_form=StudentProfile(request.POST,instance=ProfileForm)
         if request.user.is_teacher == True :
             student=Teacher.objects.get(user=request.user)
-            filled_form=TeacherProfile(request.POST,instance=student)
+            filled_form=TeacherProfile(request.POST,instance=ProfileForm)
         
         if filled_form.is_valid(): 
             fm=filled_form.save(commit=False)
@@ -87,11 +87,11 @@ def UpdateProfile(request):
     else:
         if request.user.is_student == True :        
             user=Student.objects.get(user=request.user)
-            student=StudentProfile(instance=user)
+            ProfileForm=StudentProfile(instance=user)
         if request.user.is_teacher == True :
             user=Teacher.objects.get(user=request.user)
-            student=TeacherProfile(instance=user)
-        return render(request,'UpdateProfile.html',{'StudentSingUpForm':student})
+            ProfileForm=TeacherProfile(instance=user)
+        return render(request,'UpdateProfile.html',{'ProfileForm':ProfileForm})
 
 
 def TeacherSignUp(request):
