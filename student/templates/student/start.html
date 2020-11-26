@@ -1,9 +1,10 @@
 {% extends "base.html" %} {% block student %}
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 mt-3">
+<div class="card">
+  <div class="card-body ">
+    Please Do't  press refresh and back.
+  </div>
+</div>
+        <div class="mr-3 ml-3 mt-3">
             <form action="{% url 'done' %}" method="POST">
                 {% csrf_token %} {% for ques in questions %}
                 <div class="card border-secondary mb-3">
@@ -27,9 +28,4 @@
             </form>
 
         </div>
-        <div class="col-md-2"></div>
-    </div>
-</div>
-
-
-</div>{% endblock student %}
+        {% endblock student %}

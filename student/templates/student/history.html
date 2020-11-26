@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block student %}
+<div>
+<h3 class="bg-success text-light border border-dark mt-5 text-center rounded-pill  mb-5">History Table </h3>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th scope="col"> Result ID</th>
+                <th scope="col">Test ID</th>
+                <th scope="col">Total Question</th>
+                <th scope="col">Total Attempt</th>
+                <th scope='col'>Right Ans.</th>
+                <th scope='col'>Wrong Ans.</th>
+                <th scope='col'>Tatal Marks</th>
+                <th scope='col'>Getting Marks</th>
+                <th scope='col'>Ans. Sheet</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if test == False %}
+                <h2>You not give any Test/Quiz !</h2>
+            {% endif %}
+                {% for t in done_test %}
+                    {% comment %} {% if t.id  in is_done %}           {% endcomment %}
+                        <tr>
+                            <th scope="row">{{t.id}}</th>
+                            <td>{{t.test_id}}</td>
+                            <td>{{t.total_questions}}</td>
+                            <td>{{t.attempt}}</td>
+                            <td>{{t.right}}</td>
+                            <td>{{t.wrong}}</td>
+                            <td>{{t.marks}}</td>
+                            <td>{{t.score}}</td>
+                            <td><a href="" class='btn btn-success disabled'>Open</a> </td>
+                        </tr>
+                     {% comment %} {% endif %} {% endcomment %}
+                {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+{% endblock student %}

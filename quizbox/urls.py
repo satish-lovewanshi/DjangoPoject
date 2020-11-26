@@ -9,6 +9,10 @@ urlpatterns = [
     path('edit',views.edit,name='edit'),
     path('manage_test',views.manage_test,name='manage_test'),
     path('manage_ques/<int:pk>',views.manage_ques,name='manage_ques'),
+    path('manage_student',views.manage_student,name='manage_student'),
+    path('remove_student/<int:pk>',views.remove_student,name='remove_student'),
+
+
 
     path('delete_test/<int:pk>',views.delete_test,name='delete_test'),
     path('delete_ques/<int:pk>',views.delete_ques,name='delete_ques'),

@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from .forms import QuestionForm,TestForm
 from django.forms import formset_factory
 from .models import Test,Question
+from logins.models import User,Student,Teacher
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -53,9 +54,21 @@ def edit(request):
     
 @login_required(login_url='LoginPage')
 def manage_test(request):
-    test=Test.objects.all()
+    branch=Teacher.objects.get(user=User.objects.get(username=request.user).id).branch
+    test=Test.objects.filter(branch=branch)
     return render(request,'manage_test.html',{'test':test})
-    
+
+@login_required(login_url='LoginPage')
+def manage_student(request):
+    branch=Teacher.objects.get(user=User.objects.get(username=request.user).id).branch
+    students=Student.objects.filter(branch=branch)
+    return render(request,'manage_student.html',{'students':students})
+
+@login_required(login_url='LoginPage')
+def remove_student(request,pk):
+    students=Student.objects.get(user=pk).delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+
 @login_required(login_url='LoginPage')
 def delete_test(request,pk):
     test=Test.objects.get(id=pk).delete()

@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from quizbox.models import Test,Question
+from logins.models import Student,User
 from .models import Result
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
 
 
 def home(request):#show all test for student 
-    test=Test.objects.all()
+    branch=Student.objects.get(user=User.objects.get(username=request.user).id).branch
+    test=Test.objects.filter(branch=branch)
     is_done=Result.objects.filter(student_id=request.session['user'])
     l=[]
     for t in test:
@@ -63,3 +65,15 @@ def done(request):
     else:
         error="something went wrong !"
         return render(request,'done.html',{'answer':error})
+
+def history(request):
+    test=Test.objects.all()
+    done_test=Result.objects.filter(student_id=request.session['user'])
+    # l=[]
+    # r=[]
+    # for t in test:
+    #     for i in is_done:
+    #         if t.id == i.test_id:
+    #             l.append(t.id)
+    #             r.append(t.marks)
+    return render(request,'history.html',{'done_test':done_test})

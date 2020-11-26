@@ -1,9 +1,6 @@
 {% extends 'base.html' %} {% block student %}
-<div class='container-fluid'>
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-8">
+
+        <div class="">
             <h1 style="text-align: center;">Your Test is Successfully Done !</h1>
             {% if messages %}
             <ul class="messages">
@@ -15,9 +12,6 @@
             </ul>
             {% endif %}
         </div>
-        <div class="col-md-2">
-        </div>
-    </div>
-</div>
+ 
 
 {{answer}} {% endblock student %}

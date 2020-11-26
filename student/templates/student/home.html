@@ -1,10 +1,12 @@
 {% extends 'base.html' %} {% block student %}
 <div>
+    <h3 class="bg-light border border-success mt-5 text-center rounded-pill mb-5">Currently Test/Quiz Table</h3> 
     <table class='table'>
-        <h3 class="bg-warning text-center rounded-pill ">This is Quiz Table</h3>
-        <thead>
+        
+        <thead >
             <tr>
                 <th scope="col">Test ID</th>
+                <th scope="col">Branch</th>
                 <th scope="col">Subject</th>
                 <th scope="col">Code</th>
                 <th scope="col">Total Question</th>
@@ -12,21 +14,24 @@
             </tr>
         </thead>
         <tbody>
-            {% for t in test %}
-            <tr>
-                <th scope="row">{{t.id}}</th>
-                <td>{{t.subject}}</td>
-                <td>{{t.test_code}}</td>
-                <td>{{t.number_of_questions}}</td>
-                <td>
-
-                    {% if t.id in is_done %}
-                    <button href="" class='btn btn-secondary block' disabled>Done</button> {% else %}
-                    <a href="{% url 'start' t.id %}" class='btn btn-success block'>Start</a> {% endif %}
-                </td>
-            </tr>
-
-            {% endfor %}
+            <!--
+            {% if test %}
+                <h2 style='color:red; text-align:center '>Test not avilable !</h2>
+            {% endif %}
+            -->
+                {% for t in test %}
+                    {% if t.id  not in is_done %}          
+                        <tr>
+                            <th scope="row">{{t.id}}</th>
+                            <td>{{t.subject}}</td>
+                            <td>{{t.branch}}</td>
+                            <td>{{t.test_code}}</td>
+                            <td>{{t.number_of_questions}}</td>
+                            <td><a href="{% url 'start' t.id %}" class='btn btn-success block'>Start</a> </td>
+                        </tr>
+                     {% endif %}
+                {% endfor %}
+            
         </tbody>
     </table>
 </div>

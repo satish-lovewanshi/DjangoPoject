@@ -1,0 +1,48 @@
+<!--Manage Student Result -->
+{% extends 'base.html' %} {% block QuizMake %}
+<div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            <h4 class="alert-heading">{{note}}</h4>
+            <p>{{message}}</p>
+            <hr>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1 class="alert alert-warning " style='text-align:center'>Studnet Table  </h1>
+    <table class='table'>
+
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">First Name </th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Roll No.</th>
+                <th scope='col'>Branch</th>
+                <th scope='col'>Phone</th>
+                <th scope='col'>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <th scope="row">{{s.user}}</th>
+                <th >{{s.first_name}}</th>
+                <td>{{s.last_name}}</td>
+                <th>{{s.roll_number}}</th>
+                <td>{{s.branch}}</td>
+                <td>{{s.phone}}</td>
+                <td>
+                    <a href="{% url 'remove_student' s.user_id %}" class='btn btn-danger'>Remove</a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock QuizMake %}

@@ -25,6 +25,15 @@
                     {% if request.user.is_student and request.user.profile_update %} <!--this if block for student -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home' %}">Test List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'history' %}">History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Ranking</a>
+                        </li>    
+                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'UpdateProfile' %}">Update Profile</a>
                         </li>                
                     {% endif %}
 
@@ -35,10 +44,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'manage_test' %}">Manage Test</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'manage_student' %}">Manage Student</a>
+                        </li>
                     {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link " href="{% url 'LogoutUser' %}" style="color:yellow;">Logout</a>
-                    </li>
+                  
                 {% else %}
                     <li class="nav-item active">
                     <a class="nav-link " href=".">Home <span class="sr-only">(current)</span></a>
@@ -55,10 +65,18 @@
                 
                {% endif %}
             </ul>
-            {% comment %} <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> {% endcomment %}
+            
+            <form class="form-inline my-2 my-lg-0">
+                {% if user.is_authenticated %}  
+                    <span class="nav-item">
+                        <a class="nav-link " href="" style="color:yellow;">Hello ,{{user}}</a>
+                    </span>
+                    <span class="nav-item">
+                        <a class="nav-link " href="{% url 'LogoutUser' %}" style="color:yellow;">Logout</a>
+                    </span>
+                {% endif %}
+                
+            </form> 
         </div>
     </nav>
 
@@ -66,9 +84,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                {% if user.is_authenticated %}
-                    <h1 style="background-color:#a29bfe;">  Hello ,{{user}}</h1>
-                {% endif %}
+                
                 {% if request.user.profile_update == False %}
                 <a href="{% url 'UpdateProfile' %}" class='btn btn-block btn-danger btn-outline-success text-dark'>Update Profile</a>
                 {% endif %}
