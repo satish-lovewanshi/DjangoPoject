@@ -26,7 +26,9 @@ def StudentLogin(request):
             messages.info(request,"Username and Password is Wrong please Try again !")
             return redirect('LoginPage')
 def LogoutUser(request):
-    del request.session['user']
+    
+    if 'user' in request.session:
+        del request.session['user']
     if 'test_id' in request.session:
         del request.session['test_id']
     logout(request)
