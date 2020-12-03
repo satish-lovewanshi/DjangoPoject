@@ -83,7 +83,7 @@ def UpdateProfile(request):
             user=User.objects.get(username=request.user)
             user.profile_update=True
             user.save()
-            return redirect('home')
+            return redirect('/')
     else:
         if request.user.is_student == True :        
             user=Student.objects.get(user=request.user)
@@ -125,3 +125,6 @@ def TeacherSignUp(request):
     else:
         return render(request,'TeacherSignUp.html',{'TeacherSignUpForm':teacher})
     
+def ranking(request):
+    # work in progress 
+    return render(request,'ranking.html')

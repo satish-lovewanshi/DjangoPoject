@@ -30,7 +30,7 @@
                             <a class="nav-link" href="{% url 'history' %}">History</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Ranking</a>
+                            <a class="nav-link" href="{% url 'ranking' %}">Ranking</a>
                         </li>    
                          <li class="nav-item">
                             <a class="nav-link" href="{% url 'UpdateProfile' %}">Update Profile</a>
@@ -46,6 +46,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'manage_student' %}">Manage Student</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'UpdateProfile' %}">Update Profile</a>
                         </li>
                     {% endif %}
                   

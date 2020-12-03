@@ -50,7 +50,8 @@ class StudentProfile(forms.ModelForm):
 class TeacherProfile(forms.ModelForm):
     class Meta:
         model=Teacher
-        fields='__all__'
+        # fields='__all__'
+        exclude=('user',)
         widgets={
             'first_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Your Fist Name'}),        
             'last_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Your Last Name'}),        
